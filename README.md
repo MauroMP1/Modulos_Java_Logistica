@@ -1,2 +1,2 @@
-# Project_Q
-Proyecto de app para concurso de Quesos
+# Modulos java de aplicación para administración de almacenes
+Proyecto de app para administrar un centro logistico, estos son algunos de los modulos necesarios
