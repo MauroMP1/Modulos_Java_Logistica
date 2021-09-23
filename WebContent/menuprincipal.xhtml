@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<title>Menu Principal</title>
+<h:outputStylesheet library = "css" name = "styles.css"/>
+<f:event listener="#{cusu.verificarSession}" type="preRenderView"></f:event>
+</h:head> 
+<h:body> 
+<img src="C:\Imagenes\logo.PNG" alt="Imagen del Proyecto 1" width="150" height="90"/>
+<h1>Gestión de Almacenes</h1>
+<h2>Menú Principal </h2>
+
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+	 <p:submenu label="Acciones" icon="pi pi-cog">
+            
+                <p:menuitem value="Productos" action="#{menu.AbmProd}" icon="fa fa-fw fa-home" update="messages"/>
+                <p:menuitem value="Movminientos" action="#{menu.abmMovi}" icon="pi pi-refresh" update="messages"/>
+                <p:menuitem value="R.Almacenes" action="#{menu.reporte}" icon="pi pi-save" update="messages"/>
+            </p:submenu>
+ 
+        <p:menuitem value="Quit" url="index.hxtml" icon="pi pi-times" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="pi pi-home" />
+        </f:facet>
+    </p:menubar>
+</h:form>
+
+
+
+<h:form>
+<p:growl id="messages" showDetail="true"/>
+	<p:panelGrid column="4">
+		<p:column>
+				<p:commandButton action="#{menu.AbmProd}" type="submit" value="Productos" styleClass="boton_personalizado" > 
+				
+				</p:commandButton>
+			</p:column>
+		
+		<p:column>
+			<p:commandButton action="#{menu.abmMovi}" value="Movimientos" />
+					</p:column>
+	
+		<p:column>
+			<p:commandButton action="#{menu.reporte}" value="Reportes" />
+		</p:column>
+	</p:panelGrid>
+	<br />
+	<br />
+	<p:commandButton action="index.xhtml" value="Salir" />
+
+
+</h:form>
+
+</h:body>
+
+</html>

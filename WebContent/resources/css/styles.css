@@ -1,0 +1,83 @@
+body {
+  
+  background-image: url('../resources/imagenes/fondo.png');
+  align-content:  center;
+}
+
+dataTable{
+  background-color: lightblue;
+}
+
+.panelGrid{
+	 background-color: #0080ff;
+	align-content: center;
+	text-align: center:
+
+ 	display: flex;
+ 	flex-direction: row;
+ 	flex-wrap: wrap;
+ 	justify-content: center;
+ 	
+ 	
+	
+}
+
+panelGrid{
+	align-self: center;
+	margin: auto;
+}
+
+.ui-row-editor .ui-row-editor-pencil {
+        margin-left:15px; size:15mm !important;
+    }
+
+
+    .ui-pi-times{
+    background-image: url("resources/imagenes/delete.png")  !important;
+    resize: both;
+      }
+    .ui-icon-myDelete{
+    background-image: url(../resources/imagenes/delete.jpg) !important ;
+      
+    }
+    
+    #btDelete{
+    border-bottom: red;
+    }
+    
+ .btn { background: #92c7eb;
+ background-image: url(“https://www.dropbox.com/s/pfcaxw5woxepgrn/delete.png?dl=0");
+ background-size: cover;
+ background-position: center;
+ display: inline-block;
+ border: none;
+ padding: 20px;
+ width: 70px;
+ border-radius: 900px;
+ height: 70px;
+ transition: all 0.5s;
+ cursor: pointer;
+}
+.btn:hover
+{
+ width: 75px;
+ height: 75px;
+}
+
+.boton_personalizado{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+ .align_numero{
+ text-align: right;
+ }

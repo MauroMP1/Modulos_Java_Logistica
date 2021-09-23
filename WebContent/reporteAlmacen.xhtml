@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:r="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"      
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:rich="http://richfaces.org/rich"> 
+<h:head>
+
+<f:event  listener="#{cusu.verificarSession}" type="preRenderView" />
+<title>Almacenes</title>
+<h:outputStylesheet library = "css" name = "styles.css"/>
+<link rel="stylesheet" href="fontawesome/css/all.css"/>
+
+ 
+
+</h:head> 
+<h:body> 
+
+<h:form>  
+    <p:growl id="msg"/>
+     
+    <p:menubar>
+	 <p:submenu label="Acciones" icon="fa fa-fw fa-home">
+            
+                <p:menuitem value="Productos" action="#{menu.AbmProd}" icon="fa fa-fw fa-cube" update="messages"/>
+                <p:menuitem value="Movimientos" action="#{menu.abmMovi}" icon="fa fa-fw fa-refresh" update="messages"/>
+                <p:menuitem value="Reporte" action="#{menu.reporte}" icon="fa fa-fw fa-bars" update="messages"/>
+                
+            </p:submenu>
+ 
+        <p:menuitem value="Salir" action="#{cusu.logout}" icon="fa fa-sign-out-alt" />
+ 
+        <f:facet name="options">
+            <p:panelGrid columns="2">
+        <p:column>
+        <img src="..\ProyectoLaSenior\resources\imagenes\logo.png" alt="Imagen del Proyecto 1" width="75" height="45"/>
+        </p:column>
+        <p:column>
+        
+        <h:outputText value="#{usu.userN}" />
+        <br/>
+        <h:outputText value="#{usu.userP}" />
+        <br/>
+        <h:outputText value="#{usu.userC}" />
+                  </p:column>
+                  </p:panelGrid>
+        </f:facet>
+    </p:menubar>
+</h:form>
+ <br/>
+<p:separator />
+<br/>
+<p:messages id="messages" showDetail="true" closable="true">
+        <p:autoUpdate />
+    </p:messages>
+
+<p:tabView id="tabAlma">
+ <p:tab title="Reporte Almacenes" >
+ <h:form>
+ 
+ <h:outputText value="Id Inicial: " /> <p:inputText value="#{almas.idi}" type="number" />   <h:outputText value="       Id Final: " /> <p:inputText value="#{almas.idf}" type="number" /> <h:outputText value="      " /><p:commandButton value="Buscar" icon="fa fa-fw fa-binoculars" action="#{almas.buscar}" update="tablaAlma" styleClass="ui-priority-primary"></p:commandButton>
+
+ <br/>
+  <br/>
+  
+ <p:dataTable id="tablaAlma" var="alma" value="#{almas.almas}" paginator="true"
+                                     rows="20">
+ 
+     <p:column style="width:35px" headerText="Id">
+        <h:outputText value="#{alma.almaId}" />
+        
+    </p:column>
+ 
+    <p:column headerText="Nombre"  filterBy="#{alma.almaNombre}" filterMatchMode="contains">
+    <h:outputText value="#{alma.almaNombre}" />
+           
+    </p:column>
+ 
+    <p:column  headerText="Can. Estiba" filterBy="#{alma.almaCanestiba}" filterMatchMode="contains">
+    <h:outputText value="#{alma.almaCanestiba}" />
+
+    </p:column>
+ 
+    <p:column headerText="Cap. Peso"  filterBy="#{alma.almaCappeso}" filterMatchMode="contains">
+        <h:outputText value="#{alma.almaCappeso}" />
+    </p:column>
+    
+    <p:column  headerText="Costo Oper." filterBy="#{alma.almaCostoop}" filterMatchMode="contains">
+     <h:outputText value="#{alma.almaCostoop}" />
+    </p:column>
+    
+    <p:column headerText="Descripción" filterBy="#{alma.almaDescripcion}" filterMatchMode="contains">
+	<h:outputText value="#{alma.almaDescripcion}" />
+    </p:column>
+    
+    <p:column headerText="Volúmen"  filterBy="#{alma.almaVolumen}" filterMatchMode="contains">
+    <h:outputText value="#{alma.almaVolumen}" />
+               
+        </p:column>
+        
+         <p:column headerText="Local"  filterBy="#{alma.locale.locId}" filterMatchMode="contains">
+    <h:outputText value="#{alma.locale.locId}" />
+               
+        </p:column>
+ 
+ 
+ 
+ </p:dataTable>
+ 
+ <br/>
+<p:separator />
+<br/>
+
+ 
+ </h:form>
+ </p:tab>
+ <p:tab title="Ayuda">
+<div aling="center">
+<p>
+Reportes de Almacenamientos.<br/>
+<br/>
+-Se lista todos los almacenaminetos en el sistema al presionar el botón buscar.<br/>
+-Los campos id inicial y final solo soportan números.<br/>
+-Los filtros bajo los nombres de las columnas permiten la búsqueda por aproximación.<br/>
+</p>
+</div>
+
+</p:tab>
+
+</p:tabView>
+<br/>
+<p:separator />
+<br/>
+<div align="center"> 
+<h:form>
+    <p:commandButton value="Nosotros" icon="fa fa-fw fa-odnoklassniki" action="#{usu.ContactNosotros}" />
+    <h:outputText value="  " />
+    <p:commandButton value="Contacto" icon="fa fa-fw fa-address-book" action="#{usu.ContactMensaje}" />
+    <br/>
+    <br/>
+    <h:outputText value="Powered by LaSenior" />
+</h:form>
+</div>
+
+
+
+</h:body> 
+</html>
