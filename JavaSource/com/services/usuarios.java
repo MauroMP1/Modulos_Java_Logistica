@@ -74,7 +74,7 @@ public class usuarios implements Serializable{
 		}else {
 			nom = usua.getUsuNombre();
 			pass = usua.getUsuPassword();
-			if (nom.equals(usua.getUsuNombre()) && pass.equals(usua.getUsuPassword())) {
+			if (usuNombre.equals(usua.getUsuNombre()) && usuPassword.equals(usua.getUsuPassword())) {
 				if(usua.getPerfile().getPerfNombre().equals("Admin")) {
 					retur = "ABMProducto.xhtml";
 					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usua);
@@ -91,6 +91,8 @@ public class usuarios implements Serializable{
 				
 			}else{
 					System.out.println("Mal ingresado los datos");
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Atencion!",
+							  "Usuario y/o Contraseña Incorrecta"));
 			}
 		}
 		return retur;
@@ -176,7 +178,7 @@ public class usuarios implements Serializable{
 	}
 	
 	public void ContactMensaje() {
-		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Contacto", "\n"+"Por cualquier consulta diríjase a"+"\n"+" lasenior@lasenior.net");
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Contacto", "\n"+"Por cualquier consulta diríjase a"+"\n"+" mauro.mp@outlook.com");
          
 	        PrimeFaces.current().dialog().showMessageDynamic(message);
 	}
